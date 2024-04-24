@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MvcExamenAzurePersonajesMacarena.Models.Personaje>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPersonaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Serie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPersonaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <img src="@item.Imagen" style="width:200px; height:150px"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serie)
+            </td>
+            <td>
+                <a asp-controller="Personajes" asp-action="Edit" asp-route-idpersonaje="@item.IdPersonaje" class="btn btn-success">
+                    Editar
+                </a>
+                    <a asp-controller="Personajes" asp-action="Delete" asp-route-idpersonaje="@item.IdPersonaje" class="btn btn-danger">
+                        Borrar
+                    </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
